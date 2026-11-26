@@ -7,24 +7,19 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  lint-and-test:
     runs-on: ubuntu-latest
-
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
+        python-version: ["3.11", "3.12", "3.13"]
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build --if-present
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+      - run: pip install -r requirements-dev.txt discord.py aiohttp yt-dlp colorama deep-translator python-dotenv
+      - run: ruff check .
+      - run: pytest -v

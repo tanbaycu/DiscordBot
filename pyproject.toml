@@ -1,0 +1,19 @@
+[project]
+name = "discord-bot"
+version = "2.0.0"
+description = "Discord AI & Music Bot powered by Google Gemini REST API, SQLite memory, and yt-dlp."
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = [".venv", "data", ".pytest_cache", ".ruff_cache"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]

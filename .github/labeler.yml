@@ -1,22 +1,19 @@
-frontend:
+bot-core:
   - changed-files:
-      - any-glob-to-any-file: ["src/**/*.{ts,tsx,css,scss,html}", "public/**/*"]
+      - any-glob-to-any-file: ["bot.py", "ai_client.py", "memory_store.py"]
 
-backend:
+music:
   - changed-files:
-      - any-glob-to-any-file: ["server/**/*"]
+      - any-glob-to-any-file: ["music_system.py"]
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file: ["tests/**/*"]
 
 documentation:
   - changed-files:
-      - any-glob-to-any-file: ["**/*.md"]
+      - any-glob-to-any-file: ["**/*.md", "LICENSE"]
 
-configuration:
+ci-cd:
   - changed-files:
-      - any-glob-to-any-file:
-          [
-            ".github/**/*",
-            "package.json",
-            "tsconfig.json",
-            "vite.config.ts",
-            "tailwind.config.js",
-          ]
+      - any-glob-to-any-file: [".github/**/*", "Dockerfile", "pyproject.toml"]
